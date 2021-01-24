@@ -108,7 +108,7 @@ export const getCategoriesAsync = (language) => {
     axios
       /* At development, I need to change the IP address manually instead of just use localhost so that other devices in the same network can make API call. This is because localhost address for each device will be different.
       I need use other devices like phone and ipad because I want to test responsive design. when I'm not, I can use back localhost. */
-      .get(`http://192.168.1.121:5000/api/v1/category/${language}`)
+      .get(`https://charadesgo.herokuapp.com/api/v1/category/${language}`)
       .then((response) => {
         dispatch(updateCategories(response.data.data));
       })
