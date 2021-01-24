@@ -1,5 +1,5 @@
 const initialState = {
-  duration: 1, // minute
+  duration: 2, // minute
   initialTimer: 0, // second
   currentTimer: 0, // second
 };
