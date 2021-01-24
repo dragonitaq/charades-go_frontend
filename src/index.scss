@@ -1,0 +1,43 @@
+:root {
+  --color-primary: #aee6e6;
+  --color-secondary: #ffda77;
+  --color-tertiary: #ffa45b;
+  --color-grey: #2d2d2d;
+  --color-text-white: #e6e6e6;
+  --color-text-black: #e6e6e6;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  @media (max-width: 800px) {
+    font-size: 60%;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 57%;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 55%;
+  }
+}
+
+body {
+  font-family: 'Patrick Hand', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

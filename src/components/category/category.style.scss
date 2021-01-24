@@ -1,0 +1,196 @@
+$category-width-xl: 35rem;
+$category-width-l: 33rem;
+$category-width-m: 30rem;
+$category-width-s: 27rem;
+$category-width-xs: 25rem;
+
+.category-card {
+  text-align: center;
+
+  .category-details {
+    height: fit-content;
+    width: $category-width-xl;
+    padding: 2.5rem;
+    background-color: var(--color-secondary);
+    border-radius: 10% 10% 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 1200px) {
+      width: $category-width-l;
+    }
+    @media (max-width: 1100px) {
+      width: $category-width-m;
+    }
+    @media (max-width: 1000px) {
+      width: $category-width-xl;
+    }
+    @media (max-width: 800px) {
+      width: $category-width-l;
+    }
+    @media (max-width: 725px) {
+      width: $category-width-m;
+      padding: 2rem;
+    }
+    @media (max-width: 650px) {
+      width: $category-width-s;
+    }
+    @media (max-width: 575px) {
+      width: $category-width-xs;
+    }
+    @media (max-width: 525px) {
+      width: $category-width-xl;
+    }
+    @media (max-width: 350px) {
+      width: $category-width-m;
+    }
+
+    .category-details__title {
+      margin-bottom: 1rem;
+      font-size: 3rem;
+    }
+
+    .category-details__horizontal-divider {
+      background-color: black;
+      width: 50%;
+      height: 1.5px;
+      margin-bottom: 1.2rem;
+    }
+
+    .category-details__description {
+      font-size: 1.8rem;
+
+      @media (max-width: 725px) {
+        font-size: 1.6rem;
+      }
+      @media (max-width: 525px) {
+        font-size: 1.8rem;
+      }
+    }
+
+    .category-details__tags {
+      padding: 1.5rem 0;
+      padding-bottom: 0;
+
+      .category-details__items {
+        font-size: 1.5rem;
+        color: grey;
+      }
+    }
+
+    .category-details__meta {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1rem;
+      padding-bottom: 1.5rem;
+
+      @media (max-width: 1100px) {
+        width: 80%;
+      }
+      @media (max-width: 1000px) {
+        width: 80%;
+      }
+
+      .category-details__author {
+        font-size: 1.5rem;
+      }
+
+      .category-details__item-count {
+        font-size: 1.5rem;
+      }
+    }
+
+    .category-details__btn {
+      display: flex;
+      width: 80%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+      margin-bottom: 2.5rem;
+
+      .category-details__btn-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .category-details__btn-like {
+        cursor: pointer;
+
+        .category-details__btn-like--number {
+          font-size: 1.2rem;
+        }
+      }
+
+      .category-details__btn-save {
+        cursor: pointer;
+
+        .category-details__btn-save--number {
+          font-size: 1.2rem;
+        }
+      }
+
+      .category-details__btn-report {
+        cursor: pointer;
+        padding-bottom: 0.5rem;
+
+        .category-details__btn-report--number {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .category-play-btn {
+    height: 5rem;
+    width: $category-width-xl;
+    background-color: var(--color-tertiary);
+    border-radius: 5rem 5rem 5rem 5rem;
+    transform: translateY(-3rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @media (max-width: 1200px) {
+      width: $category-width-l;
+    }
+    @media (max-width: 1100px) {
+      width: $category-width-m;
+    }
+    @media (max-width: 1000px) {
+      width: $category-width-xl;
+    }
+    @media (max-width: 800px) {
+      width: $category-width-l;
+    }
+    @media (max-width: 725px) {
+      width: $category-width-m;
+    }
+    @media (max-width: 650px) {
+      width: $category-width-s;
+    }
+    @media (max-width: 575px) {
+      width: $category-width-xs;
+    }
+    @media (max-width: 525px) {
+      width: $category-width-xl;
+    }
+    @media (max-width: 350px) {
+      width: $category-width-m;
+    }
+
+    &:hover p {
+      transform: scale(1.2) translateY(-5%);
+    }
+
+    p {
+      font-size: 3rem;
+      font-weight: 1000;
+    }
+  }
+}
