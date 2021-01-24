@@ -59,9 +59,9 @@ class GameSettings extends React.Component {
             {duration} {`${duration === 1 ? 'minute' : 'minutes'}`}
           </span>
           <svg
-            className={`arrow-icon ${duration === 3 ? 'arrow-icon--grey' : null}`}
+            className={`arrow-icon ${duration === 5 ? 'arrow-icon--grey' : null}`}
             onClick={
-              duration === 3
+              duration === 5
                 ? null
                 : () => {
                     increaseDuration();
