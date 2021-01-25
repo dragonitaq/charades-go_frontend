@@ -11,3 +11,7 @@ export const selectShowHowToPlay = createSelector([selectUtilities], (showHowToP
 export const selectShowNoFnPopUp = createSelector([selectUtilities], (showNoFnPopUp) => {
   return showNoFnPopUp.showNoFnPopUp;
 });
+
+export const selectSound = createSelector([selectUtilities], (sound) => {
+  return sound.sound;
+});

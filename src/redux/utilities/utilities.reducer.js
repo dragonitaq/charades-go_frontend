@@ -1,6 +1,7 @@
 const initialState = {
   showHowToPlay: false,
   showNoFnPopUp: false,
+  sound: true,
 };
 
 const timerReducer = (state = initialState, action) => {
@@ -14,6 +15,11 @@ const timerReducer = (state = initialState, action) => {
       return {
         ...state,
         showNoFnPopUp: !state.showNoFnPopUp,
+      };
+    case 'toggleSound':
+      return {
+        ...state,
+        sound: !state.sound,
       };
     default:
       return state;

@@ -6,8 +6,10 @@ import textFit from '../../utils/textFit';
 
 import { updateItems, addCorrectWord, addGuessedWord, updateItemIndex, decreaseItemIndex, resetGuessedItems, resetCorrectItems } from '../../redux/playContent/playContent.action';
 import { convertDurationToInitialTimer, copyInitialTimerToCurrentTimer, countDownTimer } from '../../redux/playDuration/playDuration.action';
+import { toggleSound } from '../../redux/utilities/utilities.action';
 import { selectVocabulary, selectItemIndex, selectCorrectAmount } from '../../redux/playContent/playContent.selector';
 import { selectCurrentTimer } from '../../redux/playDuration/playDuration.selector';
+import { selectSound } from '../../redux/utilities/utilities.selector';
 import sprite from '../../assets/sprite.svg';
 
 import './play.style.scss';
@@ -16,6 +18,12 @@ class Play extends React.Component {
   state = {
     intervalId: null,
   };
+
+  tickSound = new Audio('/sound-tick.mp3');
+  tockSound = new Audio('/sound-tock.mp3');
+  gameOverSound = new Audio('/sound-game-over.mp3');
+  correctSound = new Audio('/sound-correct.mp3');
+  nextSound = new Audio('/sound-next.mp3');
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyPress);
@@ -32,8 +40,23 @@ class Play extends React.Component {
   }
 
   componentDidUpdate(props) {
-    // Every time this component update, check the timer. When the timer reaches 0 second, redirect to /result page.
+    //Make sound for last 10 seconds.
+    if (this.props.currentTimer === 10 || this.props.currentTimer === 8 || this.props.currentTimer === 6 || this.props.currentTimer === 4 || this.props.currentTimer === 2) {
+      if (this.props.sound) {
+        this.tickSound.play();
+      }
+    }
+    if (this.props.currentTimer === 9 || this.props.currentTimer === 7 || this.props.currentTimer === 5 || this.props.currentTimer === 3 || this.props.currentTimer === 1) {
+      if (this.props.sound) {
+        this.tockSound.play();
+      }
+    }
+
+    // Every time this component update, check the timer. When the timer reaches 0 second, play game over sound and then redirect to /result page.
     if (this.props.currentTimer === 0) {
+      if (this.props.sound) {
+        this.gameOverSound.play();
+      }
       this.props.history.push('/result');
     }
 
@@ -61,18 +84,24 @@ class Play extends React.Component {
   handleKeyPress = (event) => {
     // When space key is pressed, update guessedWord array
     if (event.keyCode === 32) {
+      if (this.props.sound) {
+        this.nextSound.play();
+      }
       this.props.addGuessedWord(this.props.vocabulary[this.props.itemIndex]);
       this.props.decreaseItemIndex();
     }
     // When enter key is pressed, update correctWord array
     if (event.keyCode === 13) {
+      if (this.props.sound) {
+        this.correctSound.play();
+      }
       this.props.addCorrectWord(this.props.vocabulary[this.props.itemIndex]);
       this.props.decreaseItemIndex();
     }
   };
 
   render() {
-    const { vocabulary, itemIndex, correctAmount, currentTimer, addCorrectWord, addGuessedWord, decreaseItemIndex, history } = this.props;
+    const { vocabulary, itemIndex, correctAmount, currentTimer, addCorrectWord, addGuessedWord, decreaseItemIndex, history, toggleSound, sound } = this.props;
 
     return (
       <div className='play-root' onKeyDown={(event) => this.handleKeyPress(event)}>
@@ -95,10 +124,15 @@ class Play extends React.Component {
             <svg className='exit-button' onClick={() => history.push('/')}>
               <use href={sprite + '#exit-button'} />
             </svg>
-            {/* At the moment, I modify this mute button to end the game for development purpose. */}
-            {/* <svg className='mute-button' onClick={() => history.push('/result')}>
-              <use href={sprite + '#sound'} />
-            </svg> */}
+            {sound ? (
+              <svg className='mute-button' onClick={() => toggleSound()}>
+                <use href={sprite + '#sound'} />
+              </svg>
+            ) : (
+              <svg className='mute-button' onClick={() => toggleSound()}>
+                <use href={sprite + '#mute'} />
+              </svg>
+            )}
           </div>
         </div>
         <div className='item-container'>{itemIndex >= 0 ? vocabulary[itemIndex].toUpperCase() : history.push('/result')}</div>
@@ -107,6 +141,9 @@ class Play extends React.Component {
           <div
             className='correct-button'
             onClick={() => {
+              if (sound) {
+                this.correctSound.play();
+              }
               addCorrectWord(vocabulary[itemIndex]);
               decreaseItemIndex();
             }}
@@ -117,6 +154,9 @@ class Play extends React.Component {
           <div
             className='next-button'
             onClick={() => {
+              if (sound) {
+                this.nextSound.play();
+              }
               addGuessedWord(vocabulary[itemIndex]);
               decreaseItemIndex();
             }}
@@ -142,6 +182,7 @@ const mapDispatchToProps = (dispatch) => {
     countDownTimer: () => dispatch(countDownTimer()),
     resetGuessedItems: () => dispatch(resetGuessedItems()),
     resetCorrectItems: () => dispatch(resetCorrectItems()),
+    toggleSound: () => dispatch(toggleSound()),
   };
 };
 
@@ -150,6 +191,7 @@ const mapStateToProps = createStructuredSelector({
   itemIndex: selectItemIndex,
   correctAmount: selectCorrectAmount,
   currentTimer: selectCurrentTimer,
+  sound: selectSound,
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Play));

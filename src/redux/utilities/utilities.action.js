@@ -8,3 +8,9 @@ export const toggleNoFnPopUp = () => {
     type: 'toggleNoFnPopUp',
   };
 };
+
+export const toggleSound = () => {
+  return {
+    type: 'toggleSound',
+  };
+};
