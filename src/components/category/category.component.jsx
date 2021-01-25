@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectCategories } from '../../redux/playContent/playContent.selector';
+import { selectSound } from '../../redux/utilities/utilities.selector';
 import { selectCategory, updateItems, updateItemIndex } from '../../redux/playContent/playContent.action';
 import { toggleNoFnPopUp } from '../../redux/utilities/utilities.action';
 import sprite from '../../assets/sprite.svg';
@@ -148,6 +149,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = createStructuredSelector({
   categories: selectCategories,
+  sound: selectSound,
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Category));

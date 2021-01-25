@@ -19,13 +19,17 @@ class Play extends React.Component {
     intervalId: null,
   };
 
+  startSound = new Audio('/sound-start.mp3');
   tickSound = new Audio('/sound-tick.mp3');
   tockSound = new Audio('/sound-tock.mp3');
-  gameOverSound = new Audio('/sound-game-over.mp3');
+  gameOverSound = new Audio('/sound-end.mp3');
   correctSound = new Audio('/sound-correct.mp3');
   nextSound = new Audio('/sound-next.mp3');
 
   componentDidMount() {
+    if (this.props.sound) {
+      this.startSound.play();
+    }
     document.addEventListener('keydown', this.handleKeyPress);
     this.props.convertDurationToInitialTimer();
     this.props.copyInitialTimerToCurrentTimer();
