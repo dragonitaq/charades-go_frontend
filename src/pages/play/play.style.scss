@@ -1,14 +1,19 @@
 .play-root {
   --play-header-height: 13rem;
-  --play-button-width: 18rem;
-
-  @media (max-width: 450px) {
-    --play-button-width: 15rem;
-  }
+  --play-button-width: 25rem;
 
   @media (max-height: 450px) {
-    --play-button-width: 15rem;
+    --play-button-width: 25rem;
     --play-header-height: 10rem;
+  }
+  @media (max-width: 550px) {
+    --play-button-width: 20rem;
+  }
+  @media (max-width: 400px) {
+    --play-button-width: 17rem;
+  }
+  @media (max-width: 350px) {
+    --play-button-width: 15rem;
   }
 
   .play-header {

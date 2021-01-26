@@ -115,7 +115,7 @@ class Play extends React.Component {
               <svg className='sand-timer-icon'>
                 <use href={sprite + '#sand-timer'} />
               </svg>
-              <div className='timer-count'>{currentTimer}S</div>
+              <div className='timer-count'>{currentTimer}s</div>
             </div>
             <div className='score'>
               <svg className='checkmark-icon'>
