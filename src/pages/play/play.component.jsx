@@ -165,7 +165,7 @@ class Play extends React.Component {
               decreaseItemIndex();
             }}
           >
-            <span className='next-button__text'>Next</span>
+            <span className='next-button__text'>Skip</span>
             <span className='next-button__shortcut'>(Press Spacebar)</span>
           </div>
         </div>

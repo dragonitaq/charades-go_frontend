@@ -55,7 +55,7 @@ class Result extends React.Component {
               <span>{` ${correctAmount}`}</span>
             </div>
             <div className='tried-score'>
-              Tried:
+              Total item(s) used:
               <span>{` ${guessAmount}`}</span>
             </div>
           </div>
