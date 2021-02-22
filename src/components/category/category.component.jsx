@@ -7,7 +7,9 @@ import { selectCategories } from '../../redux/playContent/playContent.selector';
 import { selectSound } from '../../redux/utilities/utilities.selector';
 import { selectCategory, updateItems, updateItemIndex } from '../../redux/playContent/playContent.action';
 import { toggleNoFnPopUp } from '../../redux/utilities/utilities.action';
-import sprite from '../../assets/sprite.svg';
+
+// Remove category's buttons, thus this spirte.svg file isn't needed at the moment.
+// import sprite from '../../assets/sprite.svg';
 
 import './category.style.scss';
 
@@ -74,7 +76,8 @@ class Category extends React.Component {
             <p className='category-details__author'>{`Author: ${category.authorName}`}</p>
             <p className='category-details__item-count'>{`${category.vocabulary.length} items`}</p>
           </div>
-          <div className='category-details__btn'>
+          {/* Remove these buttons because features not implement yet. */}
+          {/* <div className='category-details__btn'>
             <div
               className='category-details__btn-like'
               title='like'
@@ -120,7 +123,7 @@ class Category extends React.Component {
               </svg>
               <p className='category-details__btn-report--number'>Report</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div
           className='category-play-btn'

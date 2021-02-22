@@ -93,7 +93,7 @@ export const getCategoriesAsync = (language) => {
   return (dispatch) => {
     dispatch(getCategoriesStart());
 
-    // This is use to text loader animation with 3 seconds delay
+    // This is use to test loader animation with 3 seconds delay
     // setTimeout(() => {
     //   axios
     //     .get(`http://localhost:4000/api/v1/category/${language}`)
@@ -104,6 +104,14 @@ export const getCategoriesAsync = (language) => {
     //       dispatch(getCategoriesFailure(error.message));
     //     });
     // }, 3000);
+
+    // if (process.env.NODE_ENV === 'development') {
+    //   console.log('in development');
+    // }
+
+    // if (process.env.NODE_ENV === 'production') {
+    //   console.log('in production');
+    // }
 
     axios
       /* At development, I need to change the IP address manually instead of just use localhost so that other devices in the same network can make API call. This is because localhost address for each device will be different.
